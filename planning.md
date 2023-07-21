@@ -20,8 +20,9 @@
 - destructure className, type (with default value of "text"), required, placeholder, ...rest from props
 - import clsx and always include "input" in className
 
-## Static pages setup
+## Static and dynamic pages
 
-- Set up the routes for Home, Product, About and Cart components
+- Set up the routes for Home, Products, About and Cart components
 - Include buttons that go to each path in the Navbar component
 - Highlight current active path by using NavLink component (from react-router-dom) and calling `isActive` to mark the current page as active (give it the 'active' class).
+- Add custom text and images to static pages (Home and About) and dynamic pages(Products and Cart)
