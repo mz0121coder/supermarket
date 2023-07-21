@@ -11,4 +11,10 @@
 
 - CSS for Button with custom variables
 - destructure className, children, outline, ...rest from props
-- import clsx and conditionally set the className ('btn', 'btn-outlined','btn-default') with the generic syntax `clsx({"your-class-name": booleanValue}) `
+- import clsx and conditionally set the className ("btn", "btn-outlined", "btn-default") with the generic syntax `clsx({"your-class-name": booleanValue}) `
+
+### Input
+
+- CSS for Input with custom variables
+- destructure className, type (with default value of "text"), required, placeholder, ...rest from props
+- import clsx and always include "input" in className
