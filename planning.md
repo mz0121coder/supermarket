@@ -26,3 +26,13 @@
 - Include buttons that go to each path in the Navbar component
 - Highlight current active path by using NavLink component (from react-router-dom) and calling `isActive` to mark the current page as active (give it the 'active' class).
 - Add custom text and images to static pages (Home and About) and dynamic pages(Products and Cart)
+
+## Fetch and display products
+
+- After setting up main routes to pages, fetch from this API on the Products page:
+- Base URL: 'https://react-tutorial-demo.firebaseio.com/'
+- Endpoint: 'supermarket.json'
+- Render a <Product /> component for each product received.
+- Pass down the correct image, name, description and price as props.
+- Use the Button from UI Kit instead of plain button elements (use .btn-outline classNames).
+- Use a <Loader /> while fetch request is loading
