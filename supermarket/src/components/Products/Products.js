@@ -5,7 +5,6 @@ import Loader from '../Loader/Loader';
 export default function Products() {
 	const [products, setProducts] = useState([]);
 	const [loading, setLoading] = useState(true);
-	console.log(loading);
 
 	useEffect(() => {
 		fetch('https://react-tutorial-demo.firebaseio.com/supermarket.json')
@@ -30,6 +29,7 @@ export default function Products() {
 				{products.map((product, index) => (
 					<Product
 						key={index}
+						id={product.id}
 						image={product.image}
 						name={product.name}
 						price={product.price}

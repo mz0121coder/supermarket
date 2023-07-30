@@ -1,15 +1,18 @@
 import Button from '../../Button/Button';
+import { Link } from 'react-router-dom';
 export default function Product(props) {
 	return (
 		<div className='product'>
 			<div className='product-image-container'>
-				<img
-					src={props.image}
-					width='100'
-					height='100'
-					className='product-image'
-					alt='product name here'
-				/>
+				<Link to={`${props.id}`}>
+					<img
+						src={props.image}
+						width='100'
+						height='100'
+						className='product-image'
+						alt='product name here'
+					/>
+				</Link>
 				<div className='product-quantity-container'>
 					<div className='product-quantity'>0</div>
 				</div>

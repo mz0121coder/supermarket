@@ -36,3 +36,16 @@
 - Pass down the correct image, name, description and price as props.
 - Use the Button from UI Kit instead of plain button elements (use .btn-outline classNames).
 - Use a <Loader /> while fetch request is loading
+
+## Showing more product details
+
+- When the client clicks on the product image, it should take them to the product details page located at `/products/X` where X is the id of that product.
+- Create and render a <ProductDetails /> component that fetches the product details from the API.
+
+### Implement nested routes:
+
+Example with /products/1:
+
+- clicking on Details should take the user to /products/1 and render <ProductDetailInfo /> (this is shown by default the first time you open the page)
+- clicking on Nutrition should take the user to /products/1/nutrition and render <ProductDetailNutrition />
+- clicking on Storage should take the user to /products/1/storage and render <ProductDetailStorage />
