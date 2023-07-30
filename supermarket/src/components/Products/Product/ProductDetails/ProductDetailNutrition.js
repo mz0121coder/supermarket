@@ -3,7 +3,7 @@ import { useOutletContext } from 'react-router-dom';
 export default function ProductDetailNutrition() {
 	const product = useOutletContext();
 	const nutrition = product.nutrition;
-	console.log(nutrition);
+	// console.log(nutrition);
 	return (
 		<table className='table table-nutrition'>
 			<thead>

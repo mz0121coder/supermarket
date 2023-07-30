@@ -7,6 +7,8 @@ import Navbar from './components/Navbar/Navbar';
 import Cart from './components/Cart/Cart';
 import ProductDetails from './components/Products/Product/ProductDetails/ProductDetails';
 import ProductDetailNutrition from './components/Products/Product/ProductDetails/ProductDetailNutrition';
+import ProductDetailsInfo from './components/Products/Product/ProductDetails/ProductDetailsInfo';
+import ProductDetailStorage from './components/Products/Product/ProductDetails/ProductDetailStorage';
 
 export default function App() {
 	return (
@@ -21,6 +23,8 @@ export default function App() {
 						<Route
 							path='nutrition'
 							element={<ProductDetailNutrition />}></Route>
+						<Route path='' element={<ProductDetailsInfo />}></Route>
+						<Route path='storage' element={<ProductDetailStorage />}></Route>
 					</Route>
 					<Route path='/cart' element={<Cart />}></Route>
 				</Routes>
