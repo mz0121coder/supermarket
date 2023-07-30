@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, NavLink } from 'react-router-dom';
+import { useParams, NavLink, Outlet } from 'react-router-dom';
 
 export default function ProductDetails(props) {
 	const [product, setProduct] = useState({});
@@ -43,6 +43,7 @@ export default function ProductDetails(props) {
 						</li>
 						<li>
 							<NavLink
+								to='nutrition'
 								className={({ isActive }) => (isActive ? 'tab-active' : '')}>
 								Nutrition
 							</NavLink>
@@ -55,6 +56,7 @@ export default function ProductDetails(props) {
 						</li>
 					</ul>
 				</div>
+				<Outlet context={product} />
 			</div>
 		</div>
 	);
