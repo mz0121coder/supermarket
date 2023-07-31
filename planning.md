@@ -54,5 +54,15 @@ Example with /products/1:
 
 - In the <App  />, define a state for cart, initially empty array
 - Also define functions `handleProductAdd` and `handleProductDelete`
+- initially just console.log a message in these functions
 - pass down the cart prop to <Navbar />, <Product /> and <Cart />
 - pass both functions down to <Product /> and pass the add function to <ProductDetailsInfo />
+
+### Add/delete a product
+
+- immutably add a new product by updating the handleProductAdd function
+- add a quantity property to the product
+- if it isn't in the cart already, set quantity to 1
+- otherwise increase quantity by 1 every time the product is added
+
+- immutably delete the product by updating the handleProductDelete
