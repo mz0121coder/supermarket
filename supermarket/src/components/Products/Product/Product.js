@@ -23,9 +23,15 @@ export default function Product(props) {
 			</div>
 			<div className='product-checkout'>
 				<div>
-					<Button className='btn-outline product-delete'>x</Button>
+					<Button
+						onClick={props.handleProductDelete}
+						className='btn-outline product-delete'>
+						x
+					</Button>
 				</div>
-				<Button className='btn-outline'>${props.price}</Button>
+				<Button className='btn-outline' onClick={props.handleProductAdd}>
+					${props.price}
+				</Button>
 			</div>
 		</div>
 	);

@@ -49,3 +49,10 @@ Example with /products/1:
 - clicking on Details should take the user to /products/1 and render <ProductDetailInfo /> (this is shown by default the first time you open the page)
 - clicking on Nutrition should take the user to /products/1/nutrition and render <ProductDetailNutrition />
 - clicking on Storage should take the user to /products/1/storage and render <ProductDetailStorage />
+
+## Product Cart
+
+- In the <App  />, define a state for cart, initially empty array
+- Also define functions `handleProductAdd` and `handleProductDelete`
+- pass down the cart prop to <Navbar />, <Product /> and <Cart />
+- pass both functions down to <Product /> and pass the add function to <ProductDetailsInfo />

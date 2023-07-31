@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Product from './Product/Product';
 import Loader from '../Loader/Loader';
 
-export default function Products() {
+export default function Products(props) {
 	const [products, setProducts] = useState([]);
 	const [loading, setLoading] = useState(true);
 
@@ -34,6 +34,8 @@ export default function Products() {
 						name={product.name}
 						price={product.price}
 						description={product.description}
+						handleProductAdd={() => props.handleProductAdd(product)}
+						handleProductDelete={() => props.handleProductDelete(product.id)}
 					/>
 				))}
 			</div>
