@@ -64,7 +64,6 @@ Example with /products/1:
 - add a quantity property to the product
 - if it isn't in the cart already, set quantity to 1
 - otherwise increase quantity by 1 every time the product is added
-
 - immutably delete the product by updating the handleProductDelete
 
 ### Show product quantity

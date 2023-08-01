@@ -10,7 +10,7 @@ export default function ProductDetailsInfo(props) {
 				{product.description} sold at <strong>${product.price}</strong> per
 				piece.
 			</p>
-			<Button onClick={props.handleProductAdd(product)}>
+			<Button onClick={() => props.handleProductAdd(product)}>
 				${product.price}
 			</Button>
 		</>
