@@ -81,3 +81,9 @@ Example with /products/1:
 - for each product, render a table row with the product image, name, price and quantity
 - also show total price for each product (price \* quantity)
 - show the total quantity of price (of all products) at the bottom of the table
+
+### Restore cart from localStorage
+
+- use lazy initial state to get cart from local storage (if it exists)
+- otherwise initially set it to an empty array
+- every time the cart state changes, save it in localStorage

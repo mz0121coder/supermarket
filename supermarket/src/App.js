@@ -12,11 +12,18 @@ import ProductDetailsInfo from './components/Products/Product/ProductDetails/Pro
 import ProductDetailStorage from './components/Products/Product/ProductDetails/ProductDetailStorage';
 
 export default function App() {
-	const [cart, setCart] = useState([]);
+	// const [cart, setCart] = useState([]);
+	// use lazy initial state to get cart from local storage (if it exists)
+	// otherwise set it to an empty array
+	const [cart, setCart] = useState(
+		() => JSON.parse(localStorage.getItem('cart')) ?? []
+	);
 
 	useEffect(() => {
 		// to visualize the cart in the console every time it changes
 		// you can also use React dev tools
+		// every time cart changes, save it in localStorage
+		localStorage.setItem('cart', JSON.stringify(cart));
 		console.log(cart);
 	}, [cart]);
 
