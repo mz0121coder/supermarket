@@ -72,3 +72,12 @@ Example with /products/1:
 - if product exists in the cart (prop passed down from <App />), display the quantity, otherwise show 0
 - update cart in <Navbar /> by passing down the sum of product quantities in the cart (use reduce method)
 - when the quantity for a product is 0, do not render the quantity and the Product Delete button
+
+## Implement cart page
+
+- <Cart /> component takes in a cart prop
+- show default message when there are no products in the cart
+- when there are products, in the <Cart /> component show a table and map over the cart
+- for each product, render a table row with the product image, name, price and quantity
+- also show total price for each product (price \* quantity)
+- show the total quantity of price (of all products) at the bottom of the table
