@@ -36,6 +36,9 @@ export default function Products(props) {
 						description={product.description}
 						handleProductAdd={() => props.handleProductAdd(product)}
 						handleProductDelete={() => props.handleProductDelete(product.id)}
+						quantity={
+							props.cart.find(item => item.id === product.id)?.quantity ?? 0
+						}
 					/>
 				))}
 			</div>

@@ -66,3 +66,10 @@ Example with /products/1:
 - otherwise increase quantity by 1 every time the product is added
 
 - immutably delete the product by updating the handleProductDelete
+
+### Show product quantity
+
+- in Products.js file, pass the quantity prop down to <Product /> when mapping over the products state
+- if product exists in the cart (prop passed down from <App />), display the quantity, otherwise show 0
+- update cart in <Navbar /> by passing down the sum of product quantities in the cart (use reduce method)
+- when the quantity for a product is 0, do not render the quantity and the Product Delete button

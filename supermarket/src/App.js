@@ -13,6 +13,7 @@ import ProductDetailStorage from './components/Products/Product/ProductDetails/P
 
 export default function App() {
 	const [cart, setCart] = useState([]);
+
 	useEffect(() => {
 		// to visualize the cart in the console every time it changes
 		// you can also use React dev tools
@@ -46,7 +47,7 @@ export default function App() {
 
 	return (
 		<BrowserRouter>
-			<Navbar cart={cart} />
+			<Navbar cart={cart.reduce((acc, curr) => acc + curr.quantity, 0)} />
 			<div className='container'>
 				<Routes>
 					<Route path='/' element={<Home />}></Route>

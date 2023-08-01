@@ -30,7 +30,7 @@ export default function Navbar(props) {
 				</li>
 				<li>
 					<NavLink to='/cart' className='nav-item nav-cart btn btn-accent'>
-						Cart ({props.cart.length})
+						Cart ({props.cart})
 					</NavLink>
 				</li>
 			</ul>

@@ -14,7 +14,9 @@ export default function Product(props) {
 					/>
 				</Link>
 				<div className='product-quantity-container'>
-					<div className='product-quantity'>0</div>
+					{props.quantity > 0 && (
+						<div className='product-quantity'>{props.quantity}</div>
+					)}
 				</div>
 			</div>
 			<div className='product-info'>
@@ -23,11 +25,13 @@ export default function Product(props) {
 			</div>
 			<div className='product-checkout'>
 				<div>
-					<Button
-						onClick={props.handleProductDelete}
-						className='btn-outline product-delete'>
-						x
-					</Button>
+					{props.quantity > 0 && (
+						<Button
+							onClick={props.handleProductDelete}
+							className='btn-outline product-delete'>
+							x
+						</Button>
+					)}
 				</div>
 				<Button className='btn-outline' onClick={props.handleProductAdd}>
 					${props.price}
