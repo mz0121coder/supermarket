@@ -1,53 +1,112 @@
-export default function Cart(props) {
-	return !props.cart.length ? (
+import Input from '../Input/Input';
+import Button from '../Button/Button';
+import { useState } from 'react';
+import { loadStripe } from '@stripe/stripe-js';
+
+const stripeLoadedPromise = loadStripe(process.env.REACT_APP_STRIPE_SECRET_KEY);
+
+export default function Cart({ cart }) {
+	const totalPrice = cart.reduce(
+		(total, product) => total + product.price * product.quantity,
+		0
+	);
+
+	const [email, setEmail] = useState('');
+
+	function handleFormSubmit(event) {
+		event.preventDefault();
+
+		const lineItems = cart.map(product => {
+			return { price: product.price_id, quantity: product.quantity };
+		});
+
+		stripeLoadedPromise.then(stripe => {
+			stripe
+				.redirectToCheckout({
+					lineItems: lineItems,
+					mode: 'payment',
+					successUrl: '/',
+					cancelUrl: '/cart',
+					customerEmail: email,
+				})
+				.then(response => {
+					// this will only log if the redirect did not work
+					console.log(response.error);
+				})
+				.catch(error => {
+					// wrong API key? you will see the error message here
+					console.log(error);
+				});
+		});
+	}
+
+	return (
 		<div className='cart-layout'>
 			<div>
 				<h1>Your Cart</h1>
-				<p>You have not added any product to your cart yet.</p>
+				{cart.length === 0 && (
+					<p>You have not added any product to your cart yet.</p>
+				)}
+				{cart.length > 0 && (
+					<>
+						<table className='table table-cart'>
+							<thead>
+								<tr>
+									<th width='25%' className='th-product'>
+										Product
+									</th>
+									<th width='20%'>Unit price</th>
+									<th width='10%'>Quanity</th>
+									<th width='25%'>Total</th>
+								</tr>
+							</thead>
+							<tbody>
+								{cart.map(product => {
+									return (
+										<tr key={product.id}>
+											<td>
+												<img
+													src={product.image}
+													width='30'
+													height='30'
+													alt=''
+												/>{' '}
+												{product.name}
+											</td>
+											<td>${product.price}</td>
+											<td>{product.quantity}</td>
+											<td>
+												<strong>${product.price * product.quantity}</strong>
+											</td>
+										</tr>
+									);
+								})}
+							</tbody>
+							<tfoot>
+								<tr>
+									<th colSpan='2'></th>
+									<th className='cart-highlight'>Total</th>
+									<th className='cart-highlight'>${totalPrice}</th>
+								</tr>
+							</tfoot>
+						</table>
+						<form className='pay-form' onSubmit={handleFormSubmit}>
+							<p>
+								Enter your email and then click on pay and your products will be
+								delivered to you on the same day!
+							</p>
+							<Input
+								placeholder='Email'
+								onChange={event => setEmail(event.target.value)}
+								value={email}
+								type='email'
+								required
+							/>
+							<Button type='submit'>Pay</Button>
+						</form>
+					</>
+				)}
 			</div>
 		</div>
-	) : (
-		<table class='table table-cart'>
-			<thead>
-				<tr>
-					<th width='25%' class='th-product'>
-						Product
-					</th>
-					<th width='20%'>Unit price</th>
-					<th width='10%'>Quantity</th>
-					<th width='25%'>Total</th>
-				</tr>
-			</thead>
-			<tbody>
-				{props.cart.map((product, index) => (
-					<tr key={index}>
-						<td>
-							<img width='30' height='30' alt='' src={product.image} />
-							{product.name}
-						</td>
-						<td>${product.price}</td>
-						<td>{product.quantity}</td>
-						<td>
-							<strong>${product.price * product.quantity}</strong>
-						</td>
-					</tr>
-				))}
-			</tbody>
-			<tfoot>
-				<tr>
-					<th colSpan='2'></th>
-					<th class='cart-highlight'>
-						{props.cart.reduce((acc, curr) => acc + curr.quantity, 0)}
-					</th>
-					<th class='cart-highlight'>
-						$
-						{props.cart.reduce(
-							(acc, curr) => acc + curr.price * curr.quantity,
-							0
-						)}
-					</th>
-				</tr>
-			</tfoot>
-		</table>
 	);
 }
