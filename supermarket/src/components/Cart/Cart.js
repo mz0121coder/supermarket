@@ -3,7 +3,9 @@ import Button from '../Button/Button';
 import { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 
-const stripeLoadedPromise = loadStripe(process.env.REACT_APP_STRIPE_SECRET_KEY);
+const stripeLoadedPromise = loadStripe(
+	`pk_test_51HsqkCGuhXEITAut89vmc4jtjYd7XPs8hWfo2XPef15MFqI8rCFc8NqQU9WutlUBsd8kmNqHBeEmSrdMMpeEEyfT00KzeVdate`
+);
 
 export default function Cart({ cart }) {
 	const totalPrice = cart.reduce(
@@ -25,8 +27,8 @@ export default function Cart({ cart }) {
 				.redirectToCheckout({
 					lineItems: lineItems,
 					mode: 'payment',
-					successUrl: '/',
-					cancelUrl: '/cart',
+					successUrl: 'https://supermarket-mz.netlify.app/',
+					cancelUrl: 'https://supermarket-mz.netlify.app/',
 					customerEmail: email,
 				})
 				.then(response => {
