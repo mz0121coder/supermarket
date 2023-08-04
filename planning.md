@@ -96,3 +96,18 @@ Example with /products/1:
 - Handle the form's submit event.
 - Load stripe using the loadStripe function. When the form is submitted, call stripe.redirectToCheckout with the correct lineItems coming from the cart. They should contain the price (referring to the price_id) and the quantity.
 - Pass the customer's email by adding a new key to the object received by stripe.redirectToCheckout. The key is called customerEmail.
+
+## Stretch goal: implement dark theme
+
+### Dark theme styles
+
+Create a new CSS rule for the body when it has the class dark in App.css.
+Set the text color to white, and update the values of the following CSS variables to the following colors:
+--neutral-5 should be #222, --surface-color should be #444, and --surface-shadow should be #222.
+
+### Theme switching
+
+- Add a button in <Navbar /> with text 'Light' or 'Dark' depending on the theme
+- Create a state for the theme, and a function to toggle the theme, that is called when the user clicks the theme button
+- Inside a useEffect with the theme as a dependency, update the classlist of the body.
+- Toggle the class on the list items/links in the <Navbar /> based on the darktheme state, setting the text color to white when in dark mode
